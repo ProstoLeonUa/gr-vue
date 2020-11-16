@@ -1,3 +1,5 @@
+login - Leon
+password -1213
 ## Создание grails + vue
 
 Редактируем build.gradle файл (your-project/build.gradle)
@@ -13,7 +15,7 @@ buildscript {
 ...
 apply plugin: 'com.github.node-gradle.node'
 ```
-##Настраиваем плагин
+## Настраиваем плагин
 
 Указываем версию node, а так же  директиву где лежат зависимости и рабочую директиву для Node
 #### Подробные пример настроек (angular) - http://guides.grails.org/angular2-combined/guide/index.html
@@ -34,7 +36,7 @@ task buildClient(type: NpmTask, dependsOn: 'npmInstall') {
     args = ['run', 'build']
 }
 ```
-Создаем задачу для пересборки client приложения
+Переносим файлы в webapp - http://www.amuponda.com/2018/10/28/combining-the-grails-vue-profile-projects-into-a-single-jar/
 ```
 task copyClientResources(dependsOn: buildClient) {
     group = 'build'
@@ -59,7 +61,7 @@ clean {
 }
 ```
 Подробная информация и другие настройки - http://guides.grails.org/angular2-combined/guide/index.html
-##Изменение конфигурации
+## Изменение конфигурации
 
 Заливаем клиентское приложение в root>src>main>client
 В файле vue.config.js пишем:

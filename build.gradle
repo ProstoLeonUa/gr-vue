@@ -133,7 +133,7 @@ task buildClient(type: NpmTask, dependsOn: 'npmInstall') {
     description = 'Compile client side assets for production'
     args = ['run', 'build']
 }
-// Создаем задачу для пересборки client приложения
+// Переносим файлы в webapp
 task copyClientResources(dependsOn: buildClient) {
     group = 'build'
     description = 'Copy client resources into server'
