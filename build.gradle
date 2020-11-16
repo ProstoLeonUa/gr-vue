@@ -112,11 +112,23 @@ assets {
     minifyJs = true
     minifyCss = true
 }
+// Решил вопрос с ошибкой node ivy.xml
+// Ответ нашел тут - https://stackoverflow.com/questions/60667250/got-the-following-error-while-building-a-gradle-project
+//repositories.whenObjectAdded {
+//    if (it instanceof IvyArtifactRepository) {
+//        metadataSources {
+//            artifact()
+//        }
+//    }
+//}
 
+// Посмотрел как делать таски для запуска сборки и копирования
+// Тут - http://guides.grails.org/angular2-combined/guide/index.html
 node {
     version = '14.15.0'
-    download = true
+    download = false
     nodeModulesDir = file("src/main/client")
+
 }
 task buildClient(type: NpmTask, dependsOn: 'npmInstall') {
     group = 'build'
@@ -128,13 +140,13 @@ task copyClientResources(dependsOn: buildClient) {
     description = 'Copy client resources into server'
     doLast {
         copy {
-            from "${System.getProperty("user.dir")}/client/dist/"
-            into "${System.getProperty("user.dir")}/main/webapp"
+            from "${System.getProperty("user.dir")}/src/main/client/dist/"
+            into "${System.getProperty("user.dir")}/src/main/webapp/"
         }
     }
 }
-war.dependsOn(copyClientResources)
-
+war.dependsOn(buildClient)
+bootRun.dependsOn(copyClientResources)
 clean {
     delete fileTree(dir: "src/main/webapp")
 }
