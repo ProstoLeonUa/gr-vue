@@ -8,8 +8,10 @@ grails:
             # Whether to translate GORM events into Reactor events
             # Disabled by default for performance reasons
             events: false
+#   CORS для данного приложения не нужен - http://guides.grails.org/angular2-combined/guide/index.html
     cors:
         enabled: false
+#   Убираю статические index.html - http://guides.grails.org/angular2-combined/guide/index.html
     resources:
         pattern: /**
 info:
