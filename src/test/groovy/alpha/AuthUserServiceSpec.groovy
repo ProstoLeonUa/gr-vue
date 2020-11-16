@@ -3,7 +3,7 @@ package alpha
 import grails.testing.services.ServiceUnitTest
 import spock.lang.Specification
 
-class AuthServiceSpec extends Specification implements ServiceUnitTest<AuthService>{
+class AuthUserServiceSpec extends Specification implements ServiceUnitTest<AuthUserService>{
 
     def setup() {
     }

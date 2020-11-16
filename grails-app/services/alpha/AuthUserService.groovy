@@ -3,7 +3,7 @@ package alpha
 import grails.gorm.transactions.Transactional
 
 @Transactional
-class AuthService {
+class AuthUserService {
     // создаем Map имитацию данных для логина и пароля
     private static final Map User_Auth = [login: 'Leon', password: '1213'];
 

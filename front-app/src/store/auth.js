@@ -18,9 +18,8 @@ export default {
 		async 'post-sing'({ commit }, payload) {
 			try {
 				const user = xml(payload);
-				const response = await $login_post('http://localhost:8080/auth', user)
+				const response = await $login_post('http://localhost:8080/auth/auth', user)
 				if (response.status === 200) localStorage.token = response.data.success;
-
 			} catch (e) {
 				commit('errorMessage', e.response.data)
 				throw Error(e)

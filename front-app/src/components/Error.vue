@@ -10,7 +10,7 @@ export default {
   name: "Error",
   data() {
     return {
-      timeout: 4000,
+      timeout: 1000,
     };
   },
   computed: {

@@ -53,9 +53,12 @@ export default {
         await this.$store.dispatch("post-sing", user);
         this.$router.push("/");
       } catch (e) {
-        this.snackbar = true;
-        setTimeout(() => this.snackbar = false, 1000);
+        this.showError();
       }
+    },
+    showError() {
+      this.snackbar = true;
+      setTimeout(() => (this.snackbar = false), 1000);
     },
   },
   components: {
