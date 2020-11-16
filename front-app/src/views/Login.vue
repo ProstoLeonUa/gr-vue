@@ -54,6 +54,7 @@ export default {
         this.$router.push("/");
       } catch (e) {
         this.snackbar = true;
+        setTimeout(() => this.snackbar = false, 1000);
       }
     },
   },
