@@ -7,7 +7,9 @@ class UrlMappings {
             constraints {
                 // apply constraints here
             }
+
         }
+        "/"(uri: "/index.html")
 
     }
 

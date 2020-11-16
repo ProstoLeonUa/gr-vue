@@ -13,7 +13,7 @@ export default {
   name: "Home",
   data() {
     return {
-      href: "/login",
+      href: "/",
       logoutImg: icons("logout"),
     };
   },

@@ -9,7 +9,9 @@ grails:
             # Disabled by default for performance reasons
             events: false
     cors:
-        enabled: true
+        enabled: false
+    resources:
+        pattern: /**
 info:
     app:
         name: '@info.app.name@'

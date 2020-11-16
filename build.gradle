@@ -7,6 +7,7 @@ buildscript {
         classpath "gradle.plugin.com.github.erdi.webdriver-binaries:webdriver-binaries-gradle-plugin:2.0"
         classpath "org.grails.plugins:hibernate5:7.0.4"
         classpath "com.bertramlabs.plugins:asset-pipeline-gradle:3.2.4"
+        classpath "com.moowork.gradle:gradle-node-plugin:1.0.1"
     }
 }
 
@@ -20,6 +21,8 @@ apply plugin:"org.grails.grails-web"
 apply plugin:"com.github.erdi.webdriver-binaries"
 apply plugin:"com.bertramlabs.asset-pipeline"
 apply plugin:"org.grails.grails-gsp"
+apply plugin:"com.moowork.node"
+
 
 repositories {
     maven { url "https://repo.grails.org/grails/core" }
@@ -108,4 +111,30 @@ tasks.withType(Test) {
 assets {
     minifyJs = true
     minifyCss = true
+}
+
+node {
+    version = '14.15.0'
+    download = true
+    nodeModulesDir = file("src/main/client")
+}
+task buildClient(type: NpmTask, dependsOn: 'npmInstall') {
+    group = 'build'
+    description = 'Compile client side assets for production'
+    args = ['run', 'build']
+}
+task copyClientResources(dependsOn: buildClient) {
+    group = 'build'
+    description = 'Copy client resources into server'
+    doLast {
+        copy {
+            from "${System.getProperty("user.dir")}/client/dist/"
+            into "${System.getProperty("user.dir")}/main/webapp"
+        }
+    }
+}
+war.dependsOn(copyClientResources)
+
+clean {
+    delete fileTree(dir: "src/main/webapp")
 }
