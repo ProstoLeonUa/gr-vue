@@ -14,17 +14,17 @@
           v-model="password"
           :rules="[rules.password]"
         ></v-text-field>
-        <v-btn class="login-form__submit" @click="sign_in" :disabled="validate"
-          >Sign in</v-btn
-        >
+        <v-btn class="login-form__submit" @click="sign_in" :disabled="validate">
+            Sign in
+        </v-btn>
       </form>
-      <Error v-if="snackbar" />
+      <Notification v-if="snackbar" />
     </div>
   </div>
 </template>
 
 <script>
-import Error from "@/components/Error";
+import Notification from "@/components/Notification";
 export default {
   data() {
     return {
@@ -50,7 +50,7 @@ export default {
         password: this.password,
       };
       try {
-        await this.$store.dispatch("post-sing", user);
+        await this.$store.dispatch("auth", user);
         this.$router.push("/");
       } catch (e) {
         this.showError();
@@ -62,7 +62,7 @@ export default {
     },
   },
   components: {
-    Error,
+    Notification,
   },
 };
 </script>

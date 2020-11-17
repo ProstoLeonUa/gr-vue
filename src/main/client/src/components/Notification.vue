@@ -1,20 +1,20 @@
 <template>
   <v-snackbar value="true" :timeout="timeout" top>
-    {{ errorMessage }}</v-snackbar
+    {{ notificationMessage }}</v-snackbar
   >
 </template>
 
 <script>
 import { mapGetters } from "vuex";
 export default {
-  name: "Error",
+  name: "Notification",
   data() {
     return {
       timeout: 1000,
     };
   },
   computed: {
-    ...mapGetters(["errorMessage"]),
+    ...mapGetters(["notificationMessage"]),
   },
 };
 </script>

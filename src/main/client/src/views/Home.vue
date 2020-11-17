@@ -2,8 +2,8 @@
   <div class="home">
     <h1>WELLCOME PAGE</h1>
     <a :href="href" @click="logout" class="logout">
-      <img :src="logoutImg" />Logout</a
-    >
+      <img :src="logoutImg" />Logout
+    </a>
   </div>
 </template>
 

@@ -12,7 +12,7 @@ class AuthController {
         try {
             response.status = 200;
             // возвращаем ответ запроса на фронт в виде JSON
-            render authUserService.serviceMethod(request.XML) as JSON;
+            render authUserService.isUserAuth(request.XML) as JSON;
         } catch(e) {
             response.status = 401;
             // возвращаем ответ ошибку на фронт в виде JSON
