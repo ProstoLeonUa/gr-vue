@@ -1,6 +1,7 @@
 login - Leon
 password -1213
 ## Создание grails + vue
+Использую режим хеша в url
 
 Редактируем build.gradle файл (your-project/build.gradle)
 
